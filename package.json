@@ -1,0 +1,27 @@
+{
+  "name": "cc10_solo_project_1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Yukio0315/cc10_solo_project_1.git",
+  "author": "Yukio Ueda <52945670+Yukio0315@users.noreply.github.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "mocha tests/test.js && yarn lint",
+    "lint": "eslint --fix ."
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-problems": "^3.0.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "mocha": "^6.2.2",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.19.5",
+    "moment": "^2.24.0",
+    "pg": "^7.12.1"
+  }
+}
