@@ -4,15 +4,19 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
+//TODO: api rooter
+// const dbConfig = require("./config").db;
+// const knex = require("knex")(dbConfig);
+// const models = require("./models")(knex);
+// const apiRouter = require("./controllers")(models);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 
 const app = express();
-const __dirname = path.resolve(path.dirname(""));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
+app.set("view engine", "ejs");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -21,6 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+// app.use("/api", apiRouter);
 app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
