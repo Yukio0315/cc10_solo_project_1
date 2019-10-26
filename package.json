@@ -8,6 +8,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "mocha tests/test.js && yarn lint",
+    "dev": "nodemon ./bin/www",
     "lint": "eslint --fix ."
   },
   "devDependencies": {
@@ -17,6 +18,7 @@
     "eslint-config-problems": "^3.0.1",
     "eslint-plugin-prettier": "^3.1.1",
     "mocha": "^6.2.2",
+    "nodemon": "^1.19.4",
     "prettier": "^1.18.2"
   },
   "dependencies": {
