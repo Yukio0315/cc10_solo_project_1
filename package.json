@@ -6,6 +6,7 @@
   "author": "Yukio Ueda <52945670+Yukio0315@users.noreply.github.com>",
   "license": "UNLICENSED",
   "scripts": {
+    "start": "node ./bin/www",
     "test": "mocha tests/test.js && yarn lint",
     "lint": "eslint --fix ."
   },
