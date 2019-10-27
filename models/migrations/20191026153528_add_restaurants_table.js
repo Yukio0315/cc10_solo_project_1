@@ -24,6 +24,10 @@ exports.up = function(knex) {
 
     t.string("credit_card");
 
+    t.boolean("deleted");
+
+    t.timestamp("deleted_date");
+
     t.timestamp("created_at")
       .notNullable()
       .defaultTo(knex.fn.now());

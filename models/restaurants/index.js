@@ -3,6 +3,7 @@ module.exports = knex => {
     create: require("./create")(knex),
     list: require("./list")(knex),
     add: require("./add")(knex),
-    patch: require("./patch")(knex)
+    patch: require("./patch")(knex),
+    delete: require("./delete")(knex)
   };
 };

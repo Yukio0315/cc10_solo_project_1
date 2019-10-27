@@ -43,11 +43,19 @@ module.exports = models => {
       .catch(err => res.status(400).send(err.message));
   };
 
+  const deleteRestaurant = (req, res) => {
+    return models.restaurants
+      .delete({ id: req.body.id })
+      .then(restaurants => res.status(200).json(restaurants))
+      .catch(err => res.status(400).send(err.message));
+  };
+
   const router = express.Router();
   router.get("/", listRestaurants);
   router.post("/addAll", addAllRestaurants);
   router.post("/add", addRestaurant);
   router.patch("/patch", patchRestaurant);
+  router.delete("/delete", deleteRestaurant);
 
   return router;
 };

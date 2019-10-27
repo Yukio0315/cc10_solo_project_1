@@ -21,9 +21,7 @@ const restaurants = axios
       };
     });
   })
-  .catch(error => {
-    console.error("network error", error);
-  });
+  .catch(err => new Error(`Error ${err}`));
 
 module.exports = knex => {
   return () => {
