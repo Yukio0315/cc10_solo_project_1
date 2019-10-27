@@ -1,13 +1,14 @@
 module.exports = knex => {
   return params => {
     const id = params.id;
-    const column = params.column;
-    const value = params.value;
+    const deletedDate = new Date();
 
     return knex("restaurants")
       .where({ id: id })
       .update({
-        [column]: value
+        deleted: true,
+        deleted_date: deletedDate,
+        modified_at: deletedDate
       })
       .then(() => {
         return knex("restaurants")
