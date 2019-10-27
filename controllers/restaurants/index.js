@@ -32,10 +32,22 @@ module.exports = models => {
       .catch(err => res.status(400).send(err.message));
   };
 
+  const patchRestaurant = (req, res) => {
+    return models.restaurants
+      .patch({
+        id: req.body.id,
+        column: req.body.column,
+        value: req.body.value
+      })
+      .then(restaurants => res.status(200).json(restaurants))
+      .catch(err => res.status(400).send(err.message));
+  };
+
   const router = express.Router();
   router.get("/", listRestaurants);
   router.post("/addAll", addAllRestaurants);
   router.post("/add", addRestaurant);
+  router.patch("/patch", patchRestaurant);
 
   return router;
 };
