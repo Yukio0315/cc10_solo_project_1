@@ -1,10 +1,9 @@
 const express = require("express");
-// const router = express.Router();
+const router = express.Router();
 
-// const restaurantRouter = require("./restaurant");
+const restaurantRouter = require("./restaurants");
 
-// // module.exports = (knex) => {
-// //     return {
-// //         router.use("/restaurants", userRouter(models));
-// //     }
-// // }
+module.exports = models => {
+  router.use("/restaurant", restaurantRouter(models));
+  return router;
+};

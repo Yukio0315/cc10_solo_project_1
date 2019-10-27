@@ -36,8 +36,6 @@
     "debug": "^4.1.1",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
-    "express-graphql": "^0.9.0",
-    "graphql": "^14.5.8",
     "http-errors": "^1.7.3",
     "knex": "^0.19.5",
     "moment": "^2.24.0",

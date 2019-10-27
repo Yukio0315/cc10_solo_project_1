@@ -7,12 +7,7 @@ const logger = require("morgan");
 const dbConfig = require("./config").db;
 const knex = require("knex")(dbConfig);
 const models = require("./models")(knex);
-
-const graphqlHTTP = require("express-graphql");
-const { buildSchema } = require("graphql");
-const { schema, root } = require("./graphql")(buildSchema, models);
-
-// const apiRouter = require("./controllers")(models);
+const apiRouter = require("./controllers")(models);
 const indexRouter = require("./routes/index");
 
 const app = express();
@@ -28,14 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema,
-    rootValue: root,
-    graphiql: true
-  })
-);
+app.use("/api", apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
