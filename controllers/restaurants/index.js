@@ -15,9 +15,27 @@ module.exports = models => {
       .catch(err => res.status(400).send(err.message));
   };
 
+  const addRestaurant = (req, res) => {
+    return models.restaurants
+      .add({
+        id: req.params.id,
+        name: req.body.name,
+        category: req.body.category,
+        url: req.body.url,
+        address: req.body.address,
+        tel: req.body.tel,
+        opentime: req.body.opentime,
+        budget: req.body.budget,
+        lunch: req.body.lunch
+      })
+      .then(restaurants => res.status(200).json(restaurants))
+      .catch(err => res.status(400).send(err.message));
+  };
+
   const router = express.Router();
   router.get("/", listRestaurants);
-  router.get("/add", addAllRestaurants);
+  router.post("/addAll", addAllRestaurants);
+  router.post("/add", addRestaurant);
 
   return router;
 };

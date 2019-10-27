@@ -6,7 +6,7 @@ exports.up = function(knex) {
       .notNullable()
       .index();
 
-    t.string("name_kana").notNullable();
+    t.string("name_kana");
 
     t.string("url").notNullable();
 
@@ -35,5 +35,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable("channels");
+  return knex.schema.dropTable("restaurants");
 };
