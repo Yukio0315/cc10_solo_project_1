@@ -3,14 +3,15 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+
+const dbConfig = require("./config").db;
+const knex = require("knex")(dbConfig);
+const models = require("./models")(knex);
+
 const graphqlHTTP = require("express-graphql");
 const { buildSchema } = require("graphql");
-const { schema, root } = require("./graphql/index")(buildSchema);
+const { schema, root } = require("./graphql")(buildSchema, models);
 
-//TODO: api rooter
-// const dbConfig = require("./config").db;
-// const knex = require("knex")(dbConfig);
-// const models = require("./models")(knex);
 // const apiRouter = require("./controllers")(models);
 const indexRouter = require("./routes/index");
 
@@ -27,8 +28,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-// app.use("/api", apiRouter);
-
 app.use(
   "/graphql",
   graphqlHTTP({

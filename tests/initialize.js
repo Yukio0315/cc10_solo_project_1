@@ -10,6 +10,6 @@ const clearTable = tableName => {
 };
 
 //TODO: write table name
-const tables = [];
+const tables = ["restaurants"];
 
 Promise.all(tables.map(clearTable)).then(process.exit);

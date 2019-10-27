@@ -1,28 +1,39 @@
-exports.up = function(knex, Promise) {
+exports.up = function(knex) {
   return knex.schema.createTable("restaurants", t => {
     t.increments().index();
 
     t.string("name")
-      .unique()
       .notNullable()
       .index();
 
-    t.string("name_kana")
-      .unique()
-      .notNullable()
-      .index();
+    t.string("name_kana").notNullable();
 
-    t.string("url")
-      .unique()
-      .notNullable()
-      .index();
+    t.string("url").notNullable();
+
+    t.string("category");
+
+    t.string("address");
+
+    t.string("tel");
+
+    t.string("opentime");
+
+    t.string("budget");
+
+    t.string("lunch");
+
+    t.string("credit_card");
 
     t.timestamp("created_at")
+      .notNullable()
+      .defaultTo(knex.fn.now());
+
+    t.timestamp("modified_at")
       .notNullable()
       .defaultTo(knex.fn.now());
   });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function(knex) {
   return knex.schema.dropTable("channels");
 };

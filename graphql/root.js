@@ -1,10 +1,9 @@
 module.exports = () => {
-  `
-  Restaurants: () => {
-    return "test";
-  },
-  Restaurant(){
-    id: Int
-  }
-`;
+  return models => {
+    createRestaurants: request => {
+      console.log(models);
+      console.log(request);
+      return models.create();
+    };
+  };
 };
