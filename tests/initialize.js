@@ -9,7 +9,6 @@ const clearTable = tableName => {
     .catch(ignoreError);
 };
 
-//TODO: write table name
 const tables = ["restaurants"];
 
 Promise.all(tables.map(clearTable)).then(process.exit);
